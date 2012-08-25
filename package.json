@@ -1,6 +1,6 @@
 {
   "name": "hubot_arduino_api",
-  "version": "0.0.1",
+  "version": "0.0.1-4",
   "description": "API so that the hubot chat robot can interact with the real world",
   "author": {
     "name": "Adam Rensel",
@@ -16,7 +16,10 @@
     "socket.io-client": "0.9.10"
   },
   "engines": {
-    "node": "0.6.18",
-    "npm": "1.1.9"
+    "node": "0.6.x"
+  },
+  "subdomain": "renz45.arduino_socket_client",
+  "scripts": {
+    "start": "app.js"
   }
 }

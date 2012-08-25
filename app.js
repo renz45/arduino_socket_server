@@ -11,10 +11,10 @@ if(process.env.PORT) {
 }
 
 var io = require('socket.io').listen(server)
-io.configure(function() {
-  io.set("transports", ["xhr-polling"]);
-  io.set("polling duration", 10);
-});
+// io.configure(function() {
+//   io.set("transports", ["xhr-polling"]);
+//   io.set("polling duration", 10);
+// });
 
 var socket;
 io.sockets.on('connection', function (connectedSocket) {
