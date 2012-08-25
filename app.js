@@ -3,7 +3,14 @@ var app = express(),
     http = require('http'),
     server = http.createServer(app)
 
-var io = require('socket.io').listen(server, process.env.PORT)
+// Launch server
+if(process.env.PORT) {
+  server.listen(process.env.PORT);
+}else{
+  server.listen(9292);
+}
+
+var io = require('socket.io').listen(server)
 // io.configure(function() {
 //   io.set("transports", ["xhr-polling"]);
 //   io.set("polling duration", 10);
@@ -11,6 +18,7 @@ var io = require('socket.io').listen(server, process.env.PORT)
 
 var socket;
 io.sockets.on('connection', function (connectedSocket) {
+  console.log('SOCKET CONNECTED')
   socket = connectedSocket
   socket.emit('led_state', { led: 'on'});
 });
@@ -34,9 +42,11 @@ app.get('/port', function (req, res) {
   res.send(process.env.PORT);
 });
 
+
+
 // Launch server
-if(process.env.PORT) {
-  app.listen(process.env.PORT);
-}else{
-  app.listen(4242);
-}
+// if(process.env.PORT) {
+//   app.listen(process.env.PORT);
+// }else{
+  // app.listen(4242);
+// }
