@@ -1,7 +1,10 @@
 var express = require("express");
-var app = express();
+var app = express(),
+    http = require('http'),
+    server = http.createServer(app)
 
-var io = require('socket.io').listen(app).configure(function () {
+var io = require('socket.io').listen(server)
+io.configure(function() {
   io.set("transports", ["xhr-polling"]);
   io.set("polling duration", 10);
 });
