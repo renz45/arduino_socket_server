@@ -1,17 +1,12 @@
 var express = require("express");
 var app = express();
 
-var io = require('socket.io-client');
-var socket = io.connect('http://localhost:9292');
+var io = require('socket.io').listen(9292);
 
-socket.on('connect_failed', function(){
-    console.log('Connection Failed');
-});
-socket.on('connect', function(){
-    console.log('Connected');
-});
-socket.on('disconnect', function () {
-  console.log('Disconnected');
+var socket;
+io.sockets.on('connection', function (connectedSocket) {
+  socket = connectedSocket
+  socket.emit('led_state', { led: 'on'});
 });
 
 app.get('/command', function (req, res) {
