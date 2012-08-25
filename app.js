@@ -1,7 +1,12 @@
 var express = require("express");
 var app = express();
 
-var io = require('socket.io').listen(app);
+var io = require('socket.io')
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+io.listen(app);
 
 var socket;
 io.sockets.on('connection', function (connectedSocket) {
@@ -16,6 +21,11 @@ app.get('/command', function (req, res) {
 
 app.get('/all_on', function (req, res) {
   socket.emit('all_on', true)
+  res.end();
+});
+
+app.get('/all_off', function (req, res) {
+  socket.emit('all_on', false)
   res.end();
 });
 
