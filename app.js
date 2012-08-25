@@ -30,9 +30,8 @@ app.get('/all_off', function (req, res) {
   res.end();
 });
 
-app.get('/all_off', function (req, res) {
-  socket.emit('all_on', false)
-  res.end();
+app.get('/port', function (req, res) {
+  res.send(process.env.PORT);
 });
 
 // Launch server
