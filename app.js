@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 
-var io = require('socket.io').listen(9292);
+var io = require('socket.io').listen(app);
 
 var socket;
 io.sockets.on('connection', function (connectedSocket) {
@@ -25,5 +25,8 @@ app.get('/all_off', function (req, res) {
 });
 
 // Launch server
-
-app.listen(4242);
+if(process.env.PORT) {
+  app.listen(process.env.PORT);
+}else{
+  app.listen(4242);
+}
