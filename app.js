@@ -11,10 +11,6 @@ if(process.env.PORT) {
 }
 
 var io = require('socket.io').listen(server)
-// io.configure(function() {
-//   io.set("transports", ["xhr-polling"]);
-//   io.set("polling duration", 10);
-// });
 
 var socket;
 io.sockets.on('connection', function (connectedSocket) {
@@ -41,12 +37,3 @@ app.get('/all_off', function (req, res) {
 app.get('/port', function (req, res) {
   res.send(process.env.PORT);
 });
-
-
-
-// Launch server
-// if(process.env.PORT) {
-//   app.listen(process.env.PORT);
-// }else{
-  // app.listen(4242);
-// }
