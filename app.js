@@ -28,8 +28,8 @@ app.get('/command', function (req, res) {
   res.end();
 });
 
-app.get('/all_on', function (req, res) {
-  socket.emit('all_on', true)
+app.get('/toggle_all', function (req, res) {
+  socket.emit('toggle_all', true)
   res.end();
 });
 
