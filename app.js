@@ -21,19 +21,35 @@ io.sockets.on('connection', function (connectedSocket) {
 
 app.get('/command', function (req, res) {
   socket.emit('command', {pin: req.query['pin'], state: req.query['state']})
-  res.end();
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
+  res.end(JSON.stringify({response: 'true'}));
 });
 
 app.get('/toggle_all', function (req, res) {
   socket.emit('toggle_all', true)
-  res.end();
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
+  res.end(JSON.stringify({response: 'true'}));
 });
 
 app.get('/all_off', function (req, res) {
   socket.emit('all_on', false)
-  res.end();
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
+  res.end(JSON.stringify({response: 'true'}));
 });
 
 app.get('/port', function (req, res) {
-  res.send(process.env.PORT);
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+  });
+  res.end(JSON.stringify({port: process.env.PORT}));
 });
