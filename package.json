@@ -1,6 +1,6 @@
 {
   "name": "hubot_arduino_api",
-  "version": "0.0.1-5",
+  "version": "0.0.1-6",
   "description": "API so that the hubot chat robot can interact with the real world",
   "author": {
     "name": "Adam Rensel",
