@@ -12,7 +12,8 @@ if(process.env.PORT) {
 
 var io = require('socket.io').listen(server)
 
-var socket;
+var socket = {emit: function(){return 'No Socket Connected'}};
+
 io.sockets.on('connection', function (connectedSocket) {
   console.log('SOCKET CONNECTED')
   socket = connectedSocket
